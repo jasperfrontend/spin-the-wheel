@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
+import Copypaste from '@/views/Copypaste.vue'
 
 const routes = [
   {
@@ -17,6 +18,14 @@ const routes = [
     component: About,
     meta: {
       title: 'About this website',
+    }
+  },
+  {
+    path: '/list',
+    name: 'Copypaste',
+    component: Copypaste,
+    meta: {
+      title: 'Current artists in a list',
     }
   }
 ]
