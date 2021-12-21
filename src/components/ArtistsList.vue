@@ -2,7 +2,7 @@
   <div class="artists">
     <div v-for="artist in artists" :key="artist.title">
       <figure>
-        <img :src="artist.thumbnail + '?fit=crop&w=200&h=200&border=4,FFFFFF&border-radius-inner=8,8,8,8&border-radius=8,8,8,8'" :alt="artist.title">
+        <img :src="artist.thumbnail + '?fit=crop&w=200&h=200'" :alt="artist.title">
         <figcaption>{{ artist.title }}</figcaption>
         <div class="overlay"><span v-html="artist.content"></span></div>
       </figure>
@@ -43,17 +43,22 @@ export default {
 .artists {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
 }
 .artists figure {
-  padding: 1em;
+  padding: 0;
   margin: 1em;
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(15,15,15,.15);
   position: relative;
 }
+.artists figure figcaption {
+  padding: 10px;
+}
 .artists figure img {
   border-radius: 8px;
+  display: block;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -92,7 +97,13 @@ export default {
 }
 
 @media (max-width: 768px) {
-  .artists figure img {
+.artists figure {
+  margin: .25em;
+}
+.artists figure figcaption {
+  font-size: 11px;
+}
+.artists figure img {
     border-radius: 8px;
     max-width: 120px;
     height: auto;
