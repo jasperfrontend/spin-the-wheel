@@ -1,9 +1,8 @@
 <template>
-  <div class="app-container">
-    <Topbar />
+  <div>
     <header>
       <h1>Welcome to Spin The Wheel Song Requests</h1>
-      <p>These are the current artists on the 'Artists Edition' wheel. Hover over each artist to reveal the current joker for that artist. A joker is a track that cannot be requested whenever the joker is active in-game. <img src="https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_a836642d803c45c9ab1389d6f45cc590/default/dark/1.0" alt=""></p>
+      <p>These are the current artists on the 'Artists Edition' wheel!</p>
     </header>
     <main>
       <ArtistsList/>
@@ -13,13 +12,12 @@
 
 <script>
 import ArtistsList from '@/components/ArtistsList.vue'
-import Topbar from '@/components/Topbar.vue'
+
 export default {
-  name: 'App',
+  name: 'Home',
   components: {
-    ArtistsList,
-    Topbar
-}
+    ArtistsList
+  }
 }
 </script>
 

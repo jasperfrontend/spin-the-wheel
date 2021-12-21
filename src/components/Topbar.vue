@@ -1,10 +1,11 @@
 <template>
     <div class="topbar">
         <div class="logo">
-            <a href="/"><img src="@/assets/wof01.png" alt="Spin The Wheel"></a>
+            <router-link to="/"><img src="@/assets/wof01.png" alt="Spin The Wheel"></router-link>
         </div>
         <div class="site-name">
-            <h2>Spin The Wheel</h2>
+            <h1>Spin The Wheel</h1>
+            <router-link to="/">Current Artists</router-link> | <router-link to="/about">About</router-link>
         </div>
         <div class="twitch-link">
             <a href="https://twitch.tv/radiojasper" target="_blank">By RadioJasper</a>
@@ -30,6 +31,16 @@
 }
 .site-name {
     flex-basis: 55vw;
+    padding: 6px 0 0;
+}
+.site-name h1 {
+    font-size: 24px;
+    line-height: 18px;
+}
+.site-name a {
+    color: #FFE07D;
+    font-size: 80%;
+    text-decoration: none;
 }
 .twitch-link {
     flex-basis: 40vw;

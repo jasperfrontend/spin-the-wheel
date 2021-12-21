@@ -4,7 +4,6 @@
       <figure>
         <img :src="artist.thumbnail + '?fit=crop&w=200&h=200'" :alt="artist.title">
         <figcaption>{{ artist.title }}</figcaption>
-        <div class="overlay"><span v-html="artist.content"></span></div>
       </figure>
     </div>
   </div>
@@ -25,7 +24,7 @@ export default {
       query: {
         type: "artists",
       },
-      props: "id,title,content,thumbnail",
+      props: "id,title,thumbnail",
     };
     Cosmic.getEvents(params)
       .then((data) => {
@@ -61,39 +60,6 @@ export default {
   display: block;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-}
-
-.overlay {
-  position: absolute;
-  display: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  margin: auto;
-  background: rgba(224, 147, 3, .9);
-  padding: .5em 1em;
-  font-weight: bold;
-  color: #fff;
-  border-radius: 8px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  font-size: 80%;
-}
-
-.artists figure:hover .overlay, .artists figure:active .overlay {
-  display: block;
-  animation: fadeIn 300ms ease;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    margin-top: -1em;
-  }
-  100% {
-    opacity: 1;
-    margin-top: 0;
-  }
 }
 
 @media (max-width: 768px) {

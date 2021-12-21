@@ -1,5 +1,7 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <header>
+    <h1>About this website</h1> 
+    <p>Hey! Yeah I'll get to actually filling this page soon<sup>&trade;</sup></p>
+    <p>Meanwhile, check me out on <a href="https://twitch.tv/radiojasper" target="_blank">Twitch</a>!</p>
+  </header>
 </template>
