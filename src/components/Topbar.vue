@@ -1,7 +1,7 @@
 <template>
     <div class="topbar">
         <div class="logo">
-            <img src="@/assets/wof01.png" alt="Spin The Wheel">
+            <a href="/"><img src="@/assets/wof01.png" alt="Spin The Wheel"></a>
         </div>
         <div class="site-name">
             <h2>Spin The Wheel</h2>
