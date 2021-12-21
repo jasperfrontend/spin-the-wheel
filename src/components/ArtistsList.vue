@@ -61,12 +61,11 @@ export default {
 .overlay {
   position: absolute;
   display: none;
-  justify-content: flex-start;
   top: 0;
   left: 0;
   width: 100%;
   margin: auto;
-  background: rgba(224, 147, 3, 0.8);
+  background: rgba(224, 147, 3, .9);
   padding: .5em 1em;
   font-weight: bold;
   color: #fff;
@@ -77,7 +76,7 @@ export default {
 }
 
 .artists figure:hover .overlay, .artists figure:active .overlay {
-  display: flex;
+  display: block;
   animation: fadeIn 300ms ease;
 }
 
