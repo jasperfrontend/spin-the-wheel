@@ -41,3 +41,11 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+@media (max-width: 768px) {
+  main {
+    padding-left: 1em;
+  }
+}
+</style>

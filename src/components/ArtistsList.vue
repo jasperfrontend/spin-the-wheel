@@ -2,7 +2,7 @@
   <div class="artists">
     <div v-for="artist in artists" :key="artist.title">
       <figure>
-        <img :src="artist.thumbnail + '?fit=crop&w=200&h=200'" :alt="artist.title">
+        <img :src="artist.thumbnail + '?fit=crop&w=200&h=200'" :alt="artist.title" />
         <figcaption>{{ artist.title }}</figcaption>
       </figure>
     </div>
@@ -16,7 +16,7 @@ export default {
   name: "ArtistsList",
   data() {
     return {
-      artists: null
+      artists: null,
     };
   },
   created() {
@@ -38,7 +38,6 @@ export default {
 </script>
 
 <style scoped>
-
 .artists {
   display: flex;
   flex-flow: row wrap;
@@ -49,8 +48,10 @@ export default {
   margin: 1em;
   text-align: center;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(15,15,15,.15);
+  box-shadow: 0 0 10px rgba(15, 15, 15, 0.15);
   position: relative;
+  flex-grow: 0;
+  word-wrap: break-word;
 }
 .artists figure figcaption {
   padding: 10px;
@@ -63,13 +64,14 @@ export default {
 }
 
 @media (max-width: 768px) {
-.artists figure {
-  margin: .25em;
-}
-.artists figure figcaption {
-  font-size: 11px;
-}
-.artists figure img {
+  .artists figure {
+    margin: 0.25em;
+  }
+  .artists figure figcaption {
+    font-size: 11px;
+    padding: 5px;
+  }
+  .artists figure img {
     border-radius: 8px;
     max-width: 120px;
     height: auto;
@@ -77,6 +79,4 @@ export default {
     border-bottom-right-radius: 0;
   }
 }
-
-
 </style>
