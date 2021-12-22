@@ -9,11 +9,16 @@
       </header>
       <main>
         <figure>
-          <img :src="artist.thumbnail + '?w=900'" alt="" />
+          <img :src="artist.thumbnail + '?w=600'" alt="" />
           <figcaption>&copy; {{ artist.title }} - All Rights Reserved</figcaption>
         </figure>
-        <div v-for="tag in artist.metadata.artist_categories" :key="tag.id">
-          <span>{{ tag.title }}</span>
+        <div class="artist-tags">
+          <div v-for="tag in artist.metadata.artist_categories" :key="tag.id">
+            <span>{{ tag.title }}</span>
+          </div>
+        </div>
+        <div class="back-home">
+          <router-link to="/">&laquo; Back to overview</router-link>
         </div>
       </main>
     </div>
@@ -50,45 +55,54 @@ export default {
 </script>
 
 <style scoped>
-.artists {
+/* .artist {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-}
-.artists a {
+  max-width: 65em;
+  margin: auto;
+} */
+
+.artist a {
   color: inherit;
   text-decoration: none;
 }
-.artists figure {
-  padding: 0;
-  margin: 1em;
-  text-align: center;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(15, 15, 15, 0.15);
-  position: relative;
-  flex-grow: 0;
-  word-wrap: break-word;
-}
-.artists figure > figcaption {
+
+.artist figure > figcaption {
   padding: 10px;
   font-size: 13px;
 }
-.artists figure img {
+.artist figure img {
   border-radius: 8px;
   display: block;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
+.artist-tags div {
+  padding: 5px 10px;
+  background: lightblue;
+  margin: 5px;
+  display: inline-block;
+  border-radius: 8px;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.back-home {
+  margin-top: 2em;
+}
+
 @media (max-width: 768px) {
-  .artists figure {
+  .artist figure {
     margin: 0.25em;
   }
-  .artists figcaption {
+  .artist figcaption {
     font-size: 11px;
     padding: 5px;
   }
-  .artists figure img {
+  .artist figure img {
     border-radius: 8px;
     max-width: 120px;
     height: auto;
