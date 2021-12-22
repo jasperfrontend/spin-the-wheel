@@ -7,27 +7,32 @@
       </div>
     </header>
     <main>
-      <ArtistsList/>
+      <ArtistsList />
     </main>
   </div>
 </template>
 
 <script>
-import ArtistsList from '@/components/ArtistsList.vue'
+import ArtistsList from "@/components/ArtistsList.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    ArtistsList
-  }
-}
+    ArtistsList,
+  },
+};
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&display=swap');
-*,*:before,*:after {
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&display=swap");
+*,
+*:before,
+*:after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+main {
+  margin-bottom: 3em;
 }
 </style>

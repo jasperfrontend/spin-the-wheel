@@ -14,10 +14,7 @@
         <div class="row">
           <div class="col-first">
             <figure>
-              <img
-                :src="artist.thumbnail + '?max-w=640&max-h=360&ar=16:9&fit=crop'"
-                alt=""
-              />
+              <img :src="artist.thumbnail + '?w=640'" alt="" />
               <figcaption>&copy; {{ artist.title }} - All Rights Reserved</figcaption>
             </figure>
           </div>
