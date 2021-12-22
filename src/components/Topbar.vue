@@ -1,18 +1,26 @@
 <template>
-  <div class="topbar">
-    <div class="logo">
-      <router-link to="/"
-        ><img src="@/assets/wof01.png" alt="Spin The Wheel"
-      /></router-link>
+  <div>
+    <div class="topbar">
+      <div class="logo">
+        <router-link to="/">
+          <img src="@/assets/wof01.png" alt="Spin The Wheel" />
+        </router-link>
+      </div>
+      <div class="site-name">
+        <h1>Spin The Wheel</h1>
+      </div>
+      <div class="twitch-link">
+        <a href="https://twitch.tv/radiojasper" target="_blank">By RadioJasper</a>
+      </div>
     </div>
-    <div class="site-name">
-      <h1>Spin The Wheel</h1>
-      <router-link to="/">Current Artists</router-link>
-      <router-link to="/list">List</router-link>
-      <router-link to="/about">About</router-link>
-    </div>
-    <div class="twitch-link">
-      <a href="https://twitch.tv/radiojasper" target="_blank">By RadioJasper</a>
+    <div class="navbar">
+      <nav>
+        <ul>
+          <li><router-link to="/">Current Artists</router-link></li>
+          <li><router-link to="/list">List</router-link></li>
+          <li><router-link to="/about">About</router-link></li>
+        </ul>
+      </nav>
     </div>
   </div>
 </template>
@@ -35,7 +43,6 @@
 }
 .site-name {
   flex-basis: 55vw;
-  padding: 6px 0 0;
 }
 .site-name h1 {
   font-size: 24px;
@@ -44,7 +51,7 @@
 .site-name a {
   color: #ffe07d;
   font-size: 90%;
-  padding: 5px 5px 5px 0;
+  padding: 5px;
   margin-right: 10px;
   text-decoration: none;
 }
@@ -61,6 +68,27 @@
   text-decoration: none;
 }
 
+.navbar {
+  background: #044247;
+}
+.navbar nav ul {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  list-style: none;
+}
+.navbar nav ul a {
+  padding: 10px 20px;
+  font-size: 80%;
+  font-weight: bold;
+  color: #fff;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.navbar nav ul a.router-link-exact-active {
+  color: #b1ffc5;
+}
 @media screen and (max-width: 768px) {
   .topbar {
     font-size: 80%;

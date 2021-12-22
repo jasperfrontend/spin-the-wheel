@@ -5,7 +5,11 @@
     </div>
     <div v-else>
       <header>
-        <h1>{{ artist.title }}</h1>
+        <h1>
+          <small><router-link to="/">&laquo; back</router-link></small>
+          <br />
+          {{ artist.title }}
+        </h1>
       </header>
       <main>
         <figure>
@@ -46,6 +50,7 @@ export default {
       .then((data) => {
         this.artist = data.objects[0];
         this.loading = false;
+        window.document.title = "Artist: " + this.artist.title;
       })
       .catch((error) => {
         console.log(error);
@@ -67,7 +72,10 @@ export default {
   color: inherit;
   text-decoration: none;
 }
-
+.artist header h1 small {
+  font-weight: normal;
+  font-size: 13px;
+}
 .artist figure > figcaption {
   padding: 10px;
   font-size: 13px;
@@ -104,10 +112,14 @@ export default {
   }
   .artist figure img {
     border-radius: 8px;
-    max-width: 120px;
+    max-width: 100%;
     height: auto;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+  }
+  .back-home {
+    margin-left: 1em;
+  }
+  .artist-tags {
+    margin-left: 10px;
   }
 }
 </style>
