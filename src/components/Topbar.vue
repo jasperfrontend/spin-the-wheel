@@ -7,8 +7,8 @@
     </div>
     <div class="site-name">
       <h1>Spin The Wheel</h1>
-      <router-link to="/">Current Artists</router-link> |
-      <router-link to="/list">List</router-link> |
+      <router-link to="/">Current Artists</router-link>
+      <router-link to="/list">List</router-link>
       <router-link to="/about">About</router-link>
     </div>
     <div class="twitch-link">
@@ -43,7 +43,9 @@
 }
 .site-name a {
   color: #ffe07d;
-  font-size: 80%;
+  font-size: 90%;
+  padding: 5px 5px 5px 0;
+  margin-right: 10px;
   text-decoration: none;
 }
 .site-name a.router-link-exact-active {

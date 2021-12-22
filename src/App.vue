@@ -58,4 +58,10 @@ main {
 footer {
   font-size: 80%;
 }
+
+@media (max-width: 768px) {
+  main {
+    padding: 0;
+  }
+}
 </style>
