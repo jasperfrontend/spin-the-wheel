@@ -9,7 +9,7 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      title: 'Spin The Wheel Song Requests - By RadioJasper'
+      title: 'Spin The Wheel Song Requests - By RadioJasper',
     }
   },
   {
