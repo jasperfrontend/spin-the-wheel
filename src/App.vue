@@ -2,15 +2,8 @@
   <div class="app-container">
     <Topbar />
     <router-view />
-    <footer>
-      <p>
-        &copy; 2021-2022 RadioJasper. All images are subject to copyright by their
-        respective holder(s). If you have any questions or remarks, please contact
-        <a href="mailto:jaspervdmeer@gmail.com">jaspervdmeer@gmail.com</a> or submit a
-        <a href="https://github.com/jasperfrontend/spin-the-wheel/pulls" target="_blank"
-          >Pull Request on Github</a
-        >.
-      </p>
+    <footer class="site-footer">
+      <p>Website &copy; 2021-2022 RadioJasper. These images are not mine.</p>
     </footer>
   </div>
 </template>
@@ -53,10 +46,17 @@ footer {
   padding: 1em;
 }
 main {
-  padding: 0 1em 1em;
+  padding: 0 1em 5em;
 }
-footer {
-  font-size: 80%;
+footer.site-footer {
+  font-size: 11px;
+  background: rgba(4, 66, 71, 0.8);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  color: #fff;
 }
 
 @media (max-width: 768px) {

@@ -1,33 +1,132 @@
 <template>
   <div class="artist">
     <div v-if="loading">
-      <img src="/loading.gif" alt="Hold on, it's loading..." />
+      <div class="loader loader--style1" title="0">
+        <svg
+          version="1.1"
+          id="loader-1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          width="120px"
+          height="120px"
+          viewBox="0 0 40 40"
+          enable-background="new 0 0 40 40"
+          xml:space="preserve"
+        >
+          <path
+            opacity="0.2"
+            fill="#000"
+            d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+    s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+    c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"
+          />
+          <path
+            fill="#000"
+            d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+    C22.32,8.481,24.301,9.057,26.013,10.047z"
+          >
+            <animateTransform
+              attributeType="xml"
+              attributeName="transform"
+              type="rotate"
+              from="0 20 20"
+              to="360 20 20"
+              dur="0.5s"
+              repeatCount="indefinite"
+            />
+          </path>
+        </svg>
+      </div>
     </div>
     <div v-else>
       <header>
-        <h1>
+        <p>
           <small><router-link to="/">&laquo; back</router-link></small>
-          <br />
-          {{ artist.title }}
-        </h1>
+        </p>
+        <h1>{{ artist.title }}</h1>
       </header>
       <main>
-        <figure>
-          <img :src="artist.thumbnail + '?w=600'" alt="" />
-          <figcaption>&copy; {{ artist.title }} - All Rights Reserved</figcaption>
-        </figure>
-        <div class="artist-tags">
-          <div v-for="tag in artist.metadata.artist_categories" :key="tag.id">
-            <span>{{ tag.title }}</span>
+        <div class="row">
+          <div class="col-first">
+            <figure>
+              <img
+                :src="artist.thumbnail + '?max-h=640&max-h=360&ar=16:9&fit=crop'"
+                alt=""
+              />
+              <figcaption>&copy; {{ artist.title }} - All Rights Reserved</figcaption>
+            </figure>
+          </div>
+          <div class="col-last">
+            <div class="artist-tags">
+              <div v-for="tag in artist.metadata.artist_categories" :key="tag.id">
+                <span>{{ tag.title }}</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="back-home">
-          <router-link to="/">&laquo; Back to overview</router-link>
-        </div>
+        <footer class="footer-nav">
+          <div class="back-home">
+            <router-link to="/">&laquo; Back to overview</router-link>
+          </div>
+        </footer>
       </main>
     </div>
   </div>
 </template>
+
+<style scoped>
+svg path,
+svg rect {
+  fill: #ffc250;
+}
+main {
+  margin-bottom: 3em;
+}
+.row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.artist-tags {
+  margin-left: 2em;
+  max-width: 25vw;
+}
+figure img {
+  display: block;
+}
+figcaption {
+  background: #eaeaea;
+  font-size: 11px;
+  font-style: italic;
+  padding: 5px;
+  margin-bottom: 1em;
+}
+.artist-tags div {
+  display: inline-block;
+  margin: 0.5em;
+  background: rgba(179, 244, 255, 0.7);
+  padding: 3px 12px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+@media (max-width: 1050px) {
+  .row {
+    display: block;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .artist-tags {
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
+</style>
 
 <script>
 import Cosmic from "@/services/cosmic.js";
@@ -58,68 +157,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-/* .artist {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  max-width: 65em;
-  margin: auto;
-} */
-
-.artist a {
-  color: inherit;
-  text-decoration: none;
-}
-.artist header h1 small {
-  font-weight: normal;
-  font-size: 13px;
-}
-.artist figure > figcaption {
-  padding: 10px;
-  font-size: 13px;
-}
-.artist figure img {
-  border-radius: 8px;
-  display: block;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.artist-tags div {
-  padding: 5px 10px;
-  background: lightblue;
-  margin: 5px;
-  display: inline-block;
-  border-radius: 8px;
-  font-size: 13px;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.back-home {
-  margin-top: 2em;
-}
-
-@media (max-width: 768px) {
-  .artist figure {
-    margin: 0.25em;
-  }
-  .artist figcaption {
-    font-size: 11px;
-    padding: 5px;
-  }
-  .artist figure img {
-    border-radius: 8px;
-    max-width: 100%;
-    height: auto;
-  }
-  .back-home {
-    margin-left: 1em;
-  }
-  .artist-tags {
-    margin-left: 10px;
-  }
-}
-</style>

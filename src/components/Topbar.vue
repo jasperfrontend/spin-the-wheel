@@ -7,7 +7,7 @@
         </router-link>
       </div>
       <div class="site-name">
-        <h1>Spin The Wheel</h1>
+        <h1><router-link to="/">Spin The Wheel</router-link></h1>
       </div>
       <div class="twitch-link">
         <a href="https://twitch.tv/radiojasper" target="_blank">By RadioJasper</a>
@@ -48,6 +48,10 @@
   font-size: 24px;
   line-height: 18px;
 }
+.site-name h1 a {
+  color: #fff;
+  text-decoration: none;
+}
 .site-name a {
   color: #ffe07d;
   font-size: 90%;
@@ -55,9 +59,7 @@
   margin-right: 10px;
   text-decoration: none;
 }
-.site-name a.router-link-exact-active {
-  text-decoration: underline;
-}
+
 .twitch-link {
   flex-basis: 40vw;
   text-align: right;
