@@ -1,36 +1,46 @@
 <template>
-  <div class="artists">
-    <div v-for="artist in artists" :key="artist.slug">
-      <router-link :to="{ name: 'artist', params: { singleArtist: artist.slug } }">
+  <div class="artist">
+    <div v-if="loading">
+      <img src="/loading.gif" alt="Hold on, it's loading..." />
+    </div>
+    <div v-else>
+      <header>
+        <h1>{{ artist.title }}</h1>
+      </header>
+      <main>
         <figure>
-          <img :src="artist.thumbnail + '?fit=crop&w=200&h=200'" :alt="artist.title" />
-          <figcaption>{{ artist.title }}</figcaption>
+          <img :src="artist.thumbnail + '?w=900'" alt="" />
+          <figcaption>&copy; {{ artist.title }} - All Rights Reserved</figcaption>
         </figure>
-      </router-link>
+        <div v-for="tag in artist.metadata.artist_categories" :key="tag.id">
+          <span>{{ tag.title }}</span>
+        </div>
+      </main>
     </div>
   </div>
 </template>
 
 <script>
 import Cosmic from "@/services/cosmic.js";
-
 export default {
-  name: "ArtistsList",
   data() {
     return {
-      artists: null,
+      artist: null,
+      loading: true,
     };
   },
-  created() {
-    const params = {
-      query: {
-        type: "artists",
-      },
-      props: "id,slug,title,thumbnail",
+  async created() {
+    const query = {
+      slug: this.$route.params.singleArtist,
     };
-    Cosmic.getEvents(params)
+    const object = {
+      query,
+      props: "id,slug,title,thumbnail,metadata.artist_categories",
+    };
+    await Cosmic.getEvents(object)
       .then((data) => {
-        this.artists = data.objects;
+        this.artist = data.objects[0];
+        this.loading = false;
       })
       .catch((error) => {
         console.log(error);
@@ -59,8 +69,9 @@ export default {
   flex-grow: 0;
   word-wrap: break-word;
 }
-.artists figure figcaption {
+.artists figure > figcaption {
   padding: 10px;
+  font-size: 13px;
 }
 .artists figure img {
   border-radius: 8px;
@@ -73,7 +84,7 @@ export default {
   .artists figure {
     margin: 0.25em;
   }
-  .artists figure figcaption {
+  .artists figcaption {
     font-size: 11px;
     padding: 5px;
   }
