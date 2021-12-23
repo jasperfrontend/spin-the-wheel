@@ -7,8 +7,13 @@
       </div>
     </header>
     <main>
-      <div class="copy-paste-list" v-for="artist in artists" :key="artist.title">
-        {{ artist.title }}
+      <div v-if="loading">
+        <Loading />
+      </div>
+      <div v-else>
+        <div class="copy-paste-list" v-for="artist in artists" :key="artist.title">
+          {{ artist.title }}
+        </div>
       </div>
     </main>
   </div>
@@ -16,12 +21,17 @@
 
 <script>
 import Cosmic from "@/services/cosmic.js";
+import Loading from "@/components/Loading.vue";
 
 export default {
+  components: {
+    Loading,
+  },
   name: "Copypaste",
   data() {
     return {
       artists: null,
+      loading: true,
     };
   },
   created() {
@@ -34,6 +44,7 @@ export default {
     Cosmic.getEvents(params)
       .then((data) => {
         this.artists = data.objects;
+        this.loading = false;
       })
       .catch((error) => {
         console.log(error);
