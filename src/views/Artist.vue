@@ -10,7 +10,7 @@
         </p>
         <h1>{{ artist.title }}</h1>
       </header>
-      <main>
+      <main class="spaced">
         <div class="row">
           <div class="col-first">
             <figure>
@@ -26,20 +26,15 @@
             </div>
           </div>
         </div>
-        <footer class="footer-nav">
-          <div class="back-home">
-            <router-link to="/">&laquo; Back to overview</router-link>
-          </div>
-        </footer>
+        <div class="back-home">
+          <router-link to="/">&laquo; Back to overview</router-link>
+        </div>
       </main>
     </div>
   </div>
 </template>
 
 <style scoped>
-main {
-  margin-bottom: 3em;
-}
 .row {
   display: flex;
   flex-flow: row nowrap;
@@ -47,6 +42,9 @@ main {
 .artist-tags {
   margin-left: 2em;
   max-width: 25vw;
+}
+figure {
+  width: 640px;
 }
 figure img {
   display: block;
@@ -60,7 +58,7 @@ figcaption {
 }
 .artist-tags div {
   display: inline-block;
-  margin: 0.5em;
+  margin: 0.5em 1em 0.5em 0;
   background: rgba(179, 244, 255, 0.7);
   padding: 3px 12px;
   border-radius: 100px;
@@ -68,10 +66,16 @@ figcaption {
   font-size: 11px;
   font-weight: bold;
 }
+.back-home {
+  margin-top: 1em;
+}
 
 @media (max-width: 1050px) {
   .row {
     display: block;
+  }
+  figure {
+    width: auto;
   }
   img {
     width: 100%;

@@ -6,7 +6,7 @@
         <p>If you wanna use this list wherever, you can copy it here.</p>
       </div>
     </header>
-    <main>
+    <main class="spaced">
       <div v-if="loading">
         <Loading />
       </div>
@@ -52,11 +52,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-@media (max-width: 768px) {
-  main {
-    padding-left: 1em;
-  }
-}
-</style>

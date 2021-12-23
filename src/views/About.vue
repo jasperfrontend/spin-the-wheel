@@ -5,18 +5,10 @@
       <p>Hey! I'll get to actually filling this page soon<sup>&trade;</sup></p>
     </div>
   </header>
-  <main>
+  <main class="spaced">
     <p>
       Meanwhile, check me out on
       <a href="https://twitch.tv/radiojasper" target="_blank">Twitch</a>!
     </p>
   </main>
 </template>
-
-<style scoped>
-@media (max-width: 768px) {
-  main {
-    padding-left: 1em;
-  }
-}
-</style>

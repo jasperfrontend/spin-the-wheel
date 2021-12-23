@@ -45,7 +45,10 @@ header,
 footer {
   padding: 1em;
 }
-main {
+main:not(.spaced) {
+  padding: 0 0 5em;
+}
+main.spaced {
   padding: 0 1em 5em;
 }
 footer.site-footer {
@@ -60,7 +63,7 @@ footer.site-footer {
 }
 
 @media (max-width: 768px) {
-  main {
+  main:not(.spaced) {
     padding: 0;
   }
 }
