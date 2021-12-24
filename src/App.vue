@@ -19,6 +19,17 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;700&display=swap");
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+main {
+  margin-bottom: 3em;
+}
 #app {
   font-family: "Poppins", sans-serif;
   color: #2c3e50;

@@ -3,6 +3,7 @@ import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import Copypaste from '@/views/Copypaste.vue'
 import Artist from '@/views/Artist.vue'
+import Tag from '@/views/Tag.vue'
 
 const routes = [
   {
@@ -35,6 +36,14 @@ const routes = [
     component: Artist,
     meta: {
       title: 'Artist',
+    }
+  },
+  {
+    path: '/tag/:artistID',
+    name: 'tag',
+    component: Tag,
+    meta: {
+      title: 'Tag',
     }
   }
 ]

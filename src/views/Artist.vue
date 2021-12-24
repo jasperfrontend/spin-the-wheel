@@ -21,7 +21,14 @@
           <div class="col-last">
             <div class="artist-tags">
               <div v-for="tag in artist.metadata.artist_categories" :key="tag.id">
-                <span>{{ tag.title }}</span>
+                <router-link
+                  :to="{
+                    name: 'tag',
+                    params: { artistID: tag.id, artistName: tag.title },
+                  }"
+                >
+                  <span>{{ tag.title }}</span>
+                </router-link>
               </div>
             </div>
           </div>
@@ -42,6 +49,14 @@
 .artist-tags {
   margin-left: 2em;
   max-width: 25vw;
+}
+.artist-tags a {
+  color: inherit;
+  text-decoration: none;
+}
+.artist-tags div:hover {
+  background-color: #044247;
+  color: #fff;
 }
 figure {
   width: 640px;
@@ -96,13 +111,19 @@ export default {
   components: {
     Loading,
   },
+  props: {
+    artistName: String,
+    default: {
+      artistName: "Unknown tag",
+    },
+  },
   data() {
     return {
       artist: null,
       loading: true,
     };
   },
-  async created() {
+  created() {
     const query = {
       slug: this.$route.params.singleArtist,
     };
@@ -110,7 +131,7 @@ export default {
       query,
       props: "id,slug,title,thumbnail,metadata.artist_categories",
     };
-    await Cosmic.getEvents(object)
+    Cosmic.getEvents(object)
       .then((data) => {
         this.artist = data.objects[0];
         this.loading = false;
