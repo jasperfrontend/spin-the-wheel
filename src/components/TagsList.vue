@@ -35,7 +35,6 @@ export default {
       loading: true,
     };
   },
-
   created() {
     const params = {
       query: {

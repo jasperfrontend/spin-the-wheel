@@ -4,6 +4,7 @@ import About from '@/views/About.vue'
 import Copypaste from '@/views/Copypaste.vue'
 import Artist from '@/views/Artist.vue'
 import Tag from '@/views/Tag.vue'
+import Categories from '@/views/Categories.vue'
 
 const routes = [
   {
@@ -45,7 +46,15 @@ const routes = [
     meta: {
       title: 'Tag',
     }
-  }
+  },
+  {
+    path: '/categories',
+    name: 'categories',
+    component: Categories,
+    meta: {
+      title: 'Current categories',
+    }
+  },
 ]
 
 

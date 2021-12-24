@@ -17,6 +17,7 @@
       <nav>
         <ul>
           <li><router-link to="/">Current Artists</router-link></li>
+          <li><router-link to="/categories">Current Categories</router-link></li>
           <li><router-link to="/list">List</router-link></li>
           <li><router-link to="/about">About</router-link></li>
         </ul>
