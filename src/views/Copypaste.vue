@@ -43,7 +43,19 @@ export default {
     };
     Cosmic.getEvents(params)
       .then((data) => {
-        this.artists = data.objects;
+        let output = data.objects.sort(function (a, b) {
+          var titleA = a.title.toUpperCase();
+          var titleB = b.title.toUpperCase();
+          if (titleA < titleB) {
+            return -1;
+          }
+          if (titleA > titleB) {
+            return 1;
+          }
+          // names must be equal
+          return 0;
+        });
+        this.artists = output;
         this.loading = false;
       })
       .catch((error) => {

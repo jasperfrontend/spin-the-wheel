@@ -45,7 +45,8 @@ const routes = [
     component: Tag,
     meta: {
       title: 'Tag',
-    }
+    }, 
+    props: true
   },
   {
     path: '/categories',

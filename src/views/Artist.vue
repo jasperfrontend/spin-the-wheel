@@ -22,6 +22,7 @@
             <div class="artist-tags">
               <div v-for="tag in artist.metadata.artist_categories" :key="tag.id">
                 <router-link
+                  theTag="tag.title"
                   :to="{
                     name: 'tag',
                     params: { artistID: tag.id, artistName: tag.title },
@@ -110,12 +111,6 @@ import Loading from "@/components/Loading.vue";
 export default {
   components: {
     Loading,
-  },
-  props: {
-    artistName: String,
-    default: {
-      artistName: "Unknown tag",
-    },
   },
   data() {
     return {

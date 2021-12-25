@@ -2,29 +2,29 @@
   <div>
     <header>
       <div class="alert">
-        <h1>
-          Find more artists tagged as &ldquo;{{ this.$route.params.artistName }}&rdquo;
-        </h1>
+        <h1>Find more artists tagged as &ldquo;{{ theTag }}&rdquo;</h1>
         <p>We may do more with this data at any point.</p>
       </div>
     </header>
     <main>
-      <TagsList />
+      <TagsList :theTag="tagged" />
     </main>
   </div>
 </template>
 
 <script>
 import TagsList from "@/components/TagsList.vue";
-import artistName from "@/views/Artist.vue";
 
 export default {
-  name: "Home",
+  name: "Tag",
   components: {
     TagsList,
   },
-  props: {
-    artistName,
+  props: ["tag"],
+  data() {
+    return {
+      theTag: this.$route.params.artistName,
+    };
   },
 };
 </script>

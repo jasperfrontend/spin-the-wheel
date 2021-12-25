@@ -35,16 +35,30 @@ export default {
       loading: true,
     };
   },
-  async created() {
+  created() {
     const params = {
       query: {
         type: "artists",
       },
       props: "id,slug,title,thumbnail",
+      sort: "title",
     };
-    await Cosmic.getEvents(params)
+    Cosmic.getEvents(params)
       .then((data) => {
-        this.artists = data.objects;
+        // sort by name
+        let output = data.objects.sort(function (a, b) {
+          var slugA = a.slug.toUpperCase();
+          var slugB = b.slug.toUpperCase();
+          if (slugA < slugB) {
+            return -1;
+          }
+          if (slugA > slugB) {
+            return 1;
+          }
+          // names must be equal
+          return 0;
+        });
+        this.artists = output;
         this.loading = false;
       })
       .catch((error) => {
