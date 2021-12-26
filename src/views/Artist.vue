@@ -29,7 +29,7 @@
                 <router-link
                   :to="{
                     name: 'tag',
-                    params: { tagtitle: encodeURIComponent(tag.title), tagid: tag.id },
+                    params: { tagslug: tag.slug, tagtitle: tag.title, tagid: tag.id },
                   }"
                 >
                   <span>{{ tag.title }}</span>
@@ -137,6 +137,10 @@ export default {
       required: true,
     },
     tagid: {
+      type: String,
+      required: true,
+    },
+    tagslug: {
       type: String,
       required: true,
     },

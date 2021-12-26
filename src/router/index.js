@@ -41,7 +41,7 @@ const routes = [
     props: true,
   },
   {
-    path: '/tag/:tagid/:tagtitle',
+    path: '/tag/:tagid/:tagslug',
     name: 'tag',
     component: Tag,
     meta: {
@@ -61,6 +61,7 @@ const routes = [
 
 
 const router = createRouter({
+  mode: 'history',
   history: createWebHistory(process.env.BASE_URL),
   base: process.env.BASE_URL,
   routes

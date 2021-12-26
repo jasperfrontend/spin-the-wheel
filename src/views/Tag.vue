@@ -3,7 +3,7 @@
     <header>
       <div class="alert">
         <h1>
-          Find more artists tagged as <kbd>{{ decodeURIComponent(tagtitle) }}</kbd>
+          Find more artists tagged as <kbd>{{ tagslug }}</kbd>
         </h1>
         <p>We may do more with this data at any point.</p>
       </div>
@@ -51,6 +51,10 @@ export default {
       type: String,
       required: true,
     },
+    tagslug: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
@@ -82,7 +86,7 @@ export default {
         });
         this.artists = output;
         this.loading = false;
-        window.document.title = "Tag: " + decodeURIComponent(this.tagtitle);
+        window.document.title = "Tag: " + this.tagtitle;
       })
       .catch((error) => {
         console.log(error);

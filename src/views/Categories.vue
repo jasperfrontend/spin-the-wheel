@@ -18,7 +18,7 @@
                 name: 'tag',
                 params: {
                   tagid: cat.id,
-                  tagtitle: cat.title,
+                  tagtitle: encodeURIComponent(cat.title),
                 },
               }"
               >{{ cat.title }}</router-link
