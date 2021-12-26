@@ -1,20 +1,20 @@
 <template>
   <div>
-    <div v-if="loading">
-      <Loading />
-    </div>
-    <div v-else>
-      <header>
-        <div class="alert">
-          <h1>
-            Find more artists tagged as <kbd>{{ pagetitle.title }}</kbd>
-          </h1>
-          <p>We may do more with this data at any point.</p>
-        </div>
-      </header>
-    </div>
+    <header>
+      <div class="alert">
+        <h1>
+          Find more artists tagged as
+          <kbd
+            ><span v-if="loading"><Loading height="16px" color="white" /></span
+            ><span v-else>{{ pagetitle.title }}</span></kbd
+          >
+        </h1>
+        <p>We may do more with this data at any point.</p>
+      </div>
+    </header>
+
     <div v-if="loadingmain">
-      <Loading />
+      <Loading height="80px" color="#ffc250" />
     </div>
     <div v-else>
       <main>
@@ -46,7 +46,17 @@ export default {
   components: {
     Loading,
   },
-
+  props: {
+    height: {
+      type: String,
+      required: true,
+    },
+    color: {
+      type: String,
+      required: true,
+      default: "#ffc250",
+    },
+  },
   data() {
     return {
       artists: null,
@@ -132,6 +142,12 @@ export default {
   display: block;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+kbd,
+kbd span,
+kbd span svg {
+  display: inline;
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {

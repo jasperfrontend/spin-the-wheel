@@ -1,7 +1,7 @@
 <template>
   <div class="artist">
     <div v-if="loading">
-      <Loading />
+      <Loading height="80px" color="#ffc250" />
     </div>
     <div v-else>
       <header>
@@ -132,6 +132,10 @@ export default {
     Loading,
   },
   props: {
+    height: {
+      type: String,
+      required: true,
+    },
     tagtitle: {
       type: String,
       required: true,

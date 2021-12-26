@@ -1,6 +1,6 @@
 <template>
   <div v-if="loading">
-    <Loading />
+    <Loading height="80px" color="#ffc250" />
   </div>
   <div v-else>
     <div class="artists">
