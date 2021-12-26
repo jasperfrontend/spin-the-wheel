@@ -8,7 +8,7 @@
     </header>
     <main class="spaced">
       <div v-if="loading">
-        <Loading />
+        <Loading height="80px" color="#ffc250" />
       </div>
       <div v-else>
         <div class="copy-paste-list" v-for="artist in artists" :key="artist.title">
@@ -26,6 +26,17 @@ import Loading from "@/components/Loading.vue";
 export default {
   components: {
     Loading,
+  },
+  props: {
+    height: {
+      type: String,
+      required: true,
+    },
+    color: {
+      type: String,
+      required: true,
+      default: "#ffc250",
+    },
   },
   name: "Copypaste",
   data() {

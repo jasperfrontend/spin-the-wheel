@@ -170,7 +170,17 @@ export default {
         this.jokers = window.document.title = "Artist: " + this.artist.title;
       })
       .catch((error) => {
-        console.log(error);
+        this.artist = {
+          thumbnail: "//jasper.monster/sharex/forbidden.png",
+          title: "No results",
+          error: error.message,
+          slug: error.status,
+          metadata: {
+            artist_categories: null,
+            jokers: "not found",
+          },
+        };
+        this.loading = false;
       });
   },
 };

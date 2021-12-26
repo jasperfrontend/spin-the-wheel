@@ -11,14 +11,6 @@
             :cardalt="artist.title"
             :cardtitle="artist.title"
           />
-          <!-- <figure>
-            <img
-              :src="artist.thumbnail + '?fit=crop&w=200&h=200'"
-              :alt="artist.title"
-              :title="'Read more about ' + artist.title"
-            />
-            <figcaption>{{ artist.title }}</figcaption>
-          </figure> -->
         </router-link>
       </div>
     </div>
@@ -83,7 +75,14 @@ export default {
         this.loading = false;
       })
       .catch((error) => {
-        console.log(error);
+        this.artists = [
+          {
+            thumbnail: "//jasper.monster/sharex/forbidden.png",
+            title: "No results",
+            error: error,
+            slug: error.status,
+          },
+        ];
       });
   },
 };

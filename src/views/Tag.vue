@@ -91,10 +91,13 @@ export default {
       .catch((error) => {
         this.artists = [
           {
-            thumbnail: "https://jasper.monster/sharex/forbidden.svg",
-            title: "Oops: " + error,
+            thumbnail: "//jasper.monster/sharex/forbidden.png",
+            title: "No results",
+            error: error,
+            slug: error.status,
           },
         ];
+        this.loadingmain = false;
       });
 
     // extra query to fix page title
@@ -112,9 +115,11 @@ export default {
         this.loading = false;
       })
       .catch((error) => {
-        this.pagetitle = {
-          title: error,
-        };
+        this.pagetitle = [
+          {
+            title: error.message,
+          },
+        ];
       });
   },
 };
