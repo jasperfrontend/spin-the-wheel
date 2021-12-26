@@ -41,7 +41,7 @@ const routes = [
     props: true,
   },
   {
-    path: '/tag/:tagid/:tagslug',
+    path: '/tag/:tagid',
     name: 'tag',
     component: Tag,
     meta: {
