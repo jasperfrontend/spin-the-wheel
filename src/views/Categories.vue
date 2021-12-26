@@ -14,7 +14,13 @@
         <ul class="categories-list">
           <li v-for="cat in categories" :key="cat.title">
             <router-link
-              :to="{ name: 'tag', params: { artistID: cat.id, artistName: cat.title } }"
+              :to="{
+                name: 'tag',
+                params: {
+                  tagid: cat.id,
+                  tagtitle: cat.title,
+                },
+              }"
               >{{ cat.title }}</router-link
             >
           </li>
@@ -29,10 +35,20 @@ import Cosmic from "@/services/cosmic.js";
 import Loading from "@/components/Loading.vue";
 
 export default {
+  name: "Categories",
   components: {
     Loading,
   },
-  name: "Categories",
+  props: {
+    tagtitle: {
+      type: String,
+      required: true,
+    },
+    tagid: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       categories: null,

@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import Cosmic from "@/services/cosmic.js";
 import Loading from "@/components/Loading.vue";
 
 export default {
@@ -30,43 +29,14 @@ export default {
     Loading,
   },
   props: {
-    theTag: String,
-  },
-  data() {
-    return {
-      artists: null,
-      loading: true,
-    };
-  },
-  created() {
-    const params = {
-      query: {
-        type: "artists",
-        "metadata.artist_categories": this.$route.params.artistID,
-      },
-      props: "slug,title,thumbnail,metadata",
-    };
-    Cosmic.getEvents(params)
-      .then((data) => {
-        let output = data.objects.sort(function (a, b) {
-          var titleA = a.title.toUpperCase();
-          var titleB = b.title.toUpperCase();
-          if (titleA < titleB) {
-            return -1;
-          }
-          if (titleA > titleB) {
-            return 1;
-          }
-          // names must be equal
-          return 0;
-        });
-        this.artists = output;
-        this.loading = false;
-        window.document.title = "Tag: " + this.$route.params.artistName;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    tagtitle: {
+      type: String,
+      required: true,
+    },
+    tagid: {
+      type: String,
+      required: true,
+    },
   },
 };
 </script>

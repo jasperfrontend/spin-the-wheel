@@ -20,12 +20,11 @@
           </div>
           <div class="col-last">
             <div class="artist-tags">
-              <div v-for="tag in artist.metadata.artist_categories" :key="tag.id">
+              <div v-for="tag in artist.metadata.artist_categories" :key="tag.slug">
                 <router-link
-                  theTag="tag.title"
                   :to="{
                     name: 'tag',
-                    params: { artistID: tag.id, artistName: tag.title },
+                    params: { tagtitle: encodeURIComponent(tag.title), tagid: tag.id },
                   }"
                 >
                   <span>{{ tag.title }}</span>
@@ -111,6 +110,16 @@ import Loading from "@/components/Loading.vue";
 export default {
   components: {
     Loading,
+  },
+  props: {
+    tagtitle: {
+      type: String,
+      required: true,
+    },
+    tagid: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {

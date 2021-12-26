@@ -37,16 +37,17 @@ const routes = [
     component: Artist,
     meta: {
       title: 'Artist',
-    }
+    },
+    props: true,
   },
   {
-    path: '/tag/:artistID',
+    path: '/tag/:tagid/:tagtitle',
     name: 'tag',
     component: Tag,
     meta: {
       title: 'Tag',
     }, 
-    props: true
+    props: true,
   },
   {
     path: '/categories',
