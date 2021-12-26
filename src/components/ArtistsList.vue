@@ -6,14 +6,19 @@
     <div class="artists">
       <div v-for="artist in artists" :key="artist.slug">
         <router-link :to="{ name: 'artist', params: { singleArtist: artist.slug } }">
-          <figure>
+          <Card
+            :cardsrc="artist.thumbnail + '?fit=crop&w=200&h=200'"
+            :cardalt="artist.title"
+            :cardtitle="artist.title"
+          />
+          <!-- <figure>
             <img
               :src="artist.thumbnail + '?fit=crop&w=200&h=200'"
               :alt="artist.title"
               :title="'Read more about ' + artist.title"
             />
             <figcaption>{{ artist.title }}</figcaption>
-          </figure>
+          </figure> -->
         </router-link>
       </div>
     </div>
@@ -23,11 +28,27 @@
 <script>
 import Cosmic from "@/services/cosmic.js";
 import Loading from "@/components/Loading.vue";
+import Card from "@/components/Card.vue";
 
 export default {
   name: "ArtistsList",
   components: {
     Loading,
+    Card,
+  },
+  props: {
+    cardsrc: {
+      type: String,
+      required: true,
+    },
+    cardalt: {
+      type: String,
+      required: true,
+    },
+    cardtitle: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {

@@ -21,14 +21,11 @@
         <div class="artists">
           <div v-for="artist in artists" :key="artist.id">
             <router-link :to="{ name: 'artist', params: { singleArtist: artist.slug } }">
-              <figure>
-                <img
-                  :src="artist.thumbnail + '?fit=crop&w=200&h=200'"
-                  :alt="artist.title"
-                  :title="artist.title"
-                />
-                <figcaption>{{ artist.title }}</figcaption>
-              </figure>
+              <Card
+                :cardsrc="artist.thumbnail + '?fit=crop&w=200&h=200'"
+                :cardalt="artist.title"
+                :cardtitle="artist.title"
+              />
             </router-link>
           </div>
         </div>
@@ -38,13 +35,15 @@
 </template>
 
 <script>
-import Loading from "@/components/Loading.vue";
 import Cosmic from "@/services/cosmic.js";
+import Loading from "@/components/Loading.vue";
+import Card from "@/components/Card.vue";
 
 export default {
   name: "Tag",
   components: {
     Loading,
+    Card,
   },
   props: {
     height: {
@@ -90,7 +89,12 @@ export default {
         this.loadingmain = false;
       })
       .catch((error) => {
-        console.log(error);
+        this.artists = [
+          {
+            thumbnail: "https://jasper.monster/sharex/forbidden.svg",
+            title: "Oops: " + error,
+          },
+        ];
       });
 
     // extra query to fix page title
@@ -108,7 +112,9 @@ export default {
         this.loading = false;
       })
       .catch((error) => {
-        console.log(error);
+        this.pagetitle = {
+          title: error,
+        };
       });
   },
 };
