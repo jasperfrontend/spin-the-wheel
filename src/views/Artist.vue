@@ -20,7 +20,12 @@
           </div>
           <div class="col-last">
             <div class="artist-tags">
-              <div v-for="tag in artist.metadata.artist_categories" :key="tag.slug">
+              <h2>Tags for {{ artist.title }}</h2>
+              <div
+                class="tag"
+                v-for="tag in artist.metadata.artist_categories"
+                :key="tag.slug"
+              >
                 <router-link
                   :to="{
                     name: 'tag',
@@ -30,6 +35,14 @@
                   <span>{{ tag.title }}</span>
                 </router-link>
               </div>
+            </div>
+            <div class="artist-tags artist-jokers">
+              <h2>Possible Jokers for {{ artist.title }}</h2>
+              <ul class="joker-list">
+                <li v-for="joker in artist.metadata.jokers.split('\n')" :key="joker.id">
+                  <span>{{ joker }}</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -54,7 +67,7 @@
   color: inherit;
   text-decoration: none;
 }
-.artist-tags div:hover {
+.artist-tags div.tag:hover {
   background-color: #044247;
   color: #fff;
 }
@@ -71,7 +84,7 @@ figcaption {
   padding: 5px;
   margin-bottom: 1em;
 }
-.artist-tags div {
+.artist-tags div.tag {
   display: inline-block;
   margin: 0.5em 1em 0.5em 0;
   background: rgba(179, 244, 255, 0.7);
@@ -83,6 +96,13 @@ figcaption {
 }
 .back-home {
   margin-top: 1em;
+}
+.artist-jokers {
+  margin-top: 2em;
+}
+.joker-list {
+  margin-top: 0.5em;
+  margin-left: 15px;
 }
 
 @media (max-width: 1050px) {
@@ -133,13 +153,13 @@ export default {
     };
     const object = {
       query,
-      props: "id,slug,title,thumbnail,metadata.artist_categories",
+      props: "id,slug,title,thumbnail,metadata.artist_categories,metadata.jokers",
     };
     Cosmic.getEvents(object)
       .then((data) => {
         this.artist = data.objects[0];
         this.loading = false;
-        window.document.title = "Artist: " + this.artist.title;
+        this.jokers = window.document.title = "Artist: " + this.artist.title;
       })
       .catch((error) => {
         console.log(error);
