@@ -45,17 +45,6 @@ export default {
     Loading,
     Card,
   },
-  props: {
-    height: {
-      type: String,
-      required: true,
-    },
-    color: {
-      type: String,
-      required: true,
-      default: "#ffc250",
-    },
-  },
   data() {
     return {
       artists: null,

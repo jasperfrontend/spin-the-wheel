@@ -27,17 +27,6 @@ export default {
   components: {
     Loading,
   },
-  props: {
-    height: {
-      type: String,
-      required: true,
-    },
-    color: {
-      type: String,
-      required: true,
-      default: "#ffc250",
-    },
-  },
   name: "Copypaste",
   data() {
     return {
