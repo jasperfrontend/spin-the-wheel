@@ -72,7 +72,12 @@ footer.site-footer {
   width: 100%;
   color: #fff;
 }
-
+kbd {
+  background-color: rgba(15, 15, 15, 0.5);
+  color: #fff;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
 @media (max-width: 768px) {
   main:not(.spaced) {
     padding: 0;
