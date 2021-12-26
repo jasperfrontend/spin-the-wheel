@@ -7,7 +7,7 @@
       </div>
     </header>
     <main class="spaced">
-      <div v-if="loading">
+      <div v-if="loading2">
         <Loading />
       </div>
       <div v-else>
@@ -45,6 +45,10 @@ export default {
       required: true,
     },
     tagid: {
+      type: String,
+      required: true,
+    },
+    tagslug: {
       type: String,
       required: true,
     },

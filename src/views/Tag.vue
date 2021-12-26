@@ -2,9 +2,14 @@
   <div>
     <header>
       <div class="alert">
-        <h1>
-          Find more artists tagged as <kbd>{{ tagslug }}</kbd>
-        </h1>
+        <div v-if="loading">
+          <Loading />
+        </div>
+        <div v-else>
+          <h1>
+            Find more artists tagged as <kbd>{{ pagetitle.title }}</kbd>
+          </h1>
+        </div>
         <p>We may do more with this data at any point.</p>
       </div>
     </header>
@@ -42,20 +47,7 @@ export default {
   components: {
     Loading,
   },
-  props: {
-    tagtitle: {
-      type: String,
-      required: true,
-    },
-    tagid: {
-      type: String,
-      required: true,
-    },
-    tagslug: {
-      type: String,
-      required: true,
-    },
-  },
+
   data() {
     return {
       artists: null,
@@ -70,23 +62,33 @@ export default {
       },
       props: "slug,title,thumbnail,metadata",
     };
-    Cosmic.getEvents(params)
-      .then((data) => {
-        let output = data.objects.sort(function (a, b) {
-          var titleA = a.title.toUpperCase();
-          var titleB = b.title.toUpperCase();
-          if (titleA < titleB) {
-            return -1;
-          }
-          if (titleA > titleB) {
-            return 1;
-          }
-          // names must be equal
-          return 0;
-        });
-        this.artists = output;
+    Cosmic.getEvents(params).then((data) => {
+      let output = data.objects.sort(function (a, b) {
+        var titleA = a.title.toUpperCase();
+        var titleB = b.title.toUpperCase();
+        if (titleA < titleB) {
+          return -1;
+        }
+        if (titleA > titleB) {
+          return 1;
+        }
+        // names must be equal
+        return 0;
+      });
+      this.artists = output;
+    });
+    const tagdata = {
+      query: {
+        type: "categories",
+        id: this.$route.params.tagid,
+      },
+      props: "id,slug,title",
+    };
+    Cosmic.getEvents(tagdata)
+      .then((returndata) => {
+        this.pagetitle = returndata.objects[0];
+        window.document.title = "Tag: " + this.pagetitle.title;
         this.loading = false;
-        window.document.title = "Tag: " + this.tagtitle;
       })
       .catch((error) => {
         console.log(error);
