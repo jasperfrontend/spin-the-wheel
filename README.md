@@ -11,3 +11,14 @@ Interactivity on Twitch needs to be light, airy and this is just that :)
 
 ## Got a video I can see?
 Watch a [previous broadcast](https://www.twitch.tv/videos/1236006487) to see this show in action!
+
+---
+
+## How to fire up this app
+You can clone this repo and run `npm run serve` to start up the development server. Then visit [https://localhost:8080](https://localhost:8080) to see the development version of the website in your browser.
+
+## Disclaimer
+This is my very first Vue app, so it's probably not great. I've learned the very basics of Vue with the [Beginner Path of Vue Mastery](https://www.vuemastery.com/courses-path/beginner) and that really helped. 
+
+## What is `Cosmic` in the code?
+The content for this app is pulled from [CosmicJS](https://www.cosmicjs.com/) through their [NPM Module](https://www.npmjs.com/package/cosmicjs).
