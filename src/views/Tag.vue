@@ -9,8 +9,8 @@
           <h1>
             Find more artists tagged as <kbd>{{ pagetitle.title }}</kbd>
           </h1>
+          <p>We may do more with this data at any point.</p>
         </div>
-        <p>We may do more with this data at any point.</p>
       </header>
     </div>
     <div v-if="loadingmain">
@@ -40,7 +40,6 @@
 <script>
 import Loading from "@/components/Loading.vue";
 import Cosmic from "@/services/cosmic.js";
-// import TagsList from "@/components/TagsList.vue";
 
 export default {
   name: "Tag",
@@ -83,6 +82,8 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+
+    // extra query to fix page title
     const tagdata = {
       query: {
         type: "categories",
