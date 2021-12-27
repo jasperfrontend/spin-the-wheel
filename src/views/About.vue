@@ -1,16 +1,14 @@
 <template>
   <header>
     <div class="alert">
-      <h1>About this website</h1>
-      <p>Read more about Spin The Wheel Song Requests</p>
+      <h1 id="spin-the-wheel-song-requests">Spin The Wheel Song Requests</h1>
+      <h2 id="by-radiojasper-https-twitch-tv-radiojasper-">
+        By <a href="https://twitch.tv/RadioJasper">RadioJasper</a>
+      </h2>
     </div>
   </header>
   <main class="spaced">
-    <h1 id="spin-the-wheel-song-requests">Spin The Wheel Song Requests</h1>
-    <h2 id="by-radiojasper-https-twitch-tv-radiojasper-">
-      By <a href="https://twitch.tv/RadioJasper">RadioJasper</a>
-    </h2>
-    <p>
+    <p class="big">
       Spin The Wheel Song Requests is a gameshow hosted by RadioJasper on Twitch. The goal
       of this music-based game is to bring people together and increase community spirit
       by tightly integrating a traditional song requests show with competitive game
@@ -34,9 +32,10 @@
       participation, they&#39;re added to the top of the screen.
     </p>
     <p>
-      <a href="https://jasper.monster/sharex/firefox_PDLPQGUUd9.png"
-        >!Active players this round</a
-      >
+      <img
+        src="https://jasper.monster/sharex/firefox_PDLPQGUUd9.png"
+        alt="Active players this round"
+      />
       The active players for this round
     </p>
     <h2 id="the-wheel-spin">The Wheel Spin</h2>
@@ -46,9 +45,10 @@
       2 active players.
     </p>
     <p>
-      <a href="https://jasper.monster/sharex/firefox_oYoai6uY3K.png"
-        >!The Wheel on screen</a
-      >
+      <img
+        src="https://jasper.monster/sharex/firefox_oYoai6uY3K.png"
+        alt="The wheel is on screen"
+      />
       The wheel is on screen
     </p>
     <h2 id="the-result-and-song-selection">The result and song selection</h2>
@@ -61,9 +61,10 @@
       in the video player on screen.
     </p>
     <p>
-      <a href="https://jasper.monster/sharex/firefox_hbDnwB8LuW.png"
-        >!The video player on screen</a
-      >
+      <img
+        src="https://jasper.monster/sharex/firefox_hbDnwB8LuW.png"
+        alt="The video player on screen"
+      />
       The video player on screen
     </p>
     <h2 id="voting-and-winner-selection">Voting and winner selection</h2>
@@ -86,3 +87,15 @@
     </p>
   </main>
 </template>
+
+<style scoped>
+main {
+  max-width: 65em;
+}
+main .big {
+  font-size: 120%;
+}
+main p {
+  margin-bottom: 2em;
+}
+</style>
